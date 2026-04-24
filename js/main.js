@@ -1,15 +1,58 @@
-(function () {
-  document.documentElement.classList.add("js-enabled");
+document.addEventListener("DOMContentLoaded", () => {
+  const typewriter = document.getElementById("typewriterText");
+  const progressBar = document.getElementById("scrollProgress");
 
-  const yearTargets = document.querySelectorAll("[data-current-year]");
-  yearTargets.forEach((target) => {
-    target.textContent = String(new Date().getFullYear());
-  });
+  const words = [
+    "investigating",
+    "analyzing",
+    "examining",
+    "preserving",
+    "tracing",
+    "reconstructing"
+  ];
 
-  const externalLinks = document.querySelectorAll('a[target="_blank"]');
-  externalLinks.forEach((link) => {
-    if (!link.rel.includes("noopener")) {
-      link.rel = `${link.rel} noopener noreferrer`.trim();
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function typeEffect() {
+    if (!typewriter) return;
+
+    const word = words[wordIndex];
+
+    typewriter.textContent = deleting
+      ? word.substring(0, charIndex--)
+      : word.substring(0, charIndex++);
+
+    let speed = deleting ? 45 : 75;
+
+    if (!deleting && charIndex > word.length) {
+      speed = 1100;
+      deleting = true;
     }
-  });
-})();
+
+    if (deleting && charIndex < 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      charIndex = 0;
+      speed = 250;
+    }
+
+    setTimeout(typeEffect, speed);
+  }
+
+  function updateScrollProgress() {
+    if (!progressBar) return;
+
+    const scrollTop = window.scrollY;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = height > 0 ? (scrollTop / height) * 100 : 0;
+
+    progressBar.style.width = progress + "%";
+  }
+
+  typeEffect();
+  updateScrollProgress();
+
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+});

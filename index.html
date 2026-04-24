@@ -6,69 +6,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Forensics Knowledge System</title>
   <meta name="description" content="Professional DFIR learning platform with evidence handling, acquisition, artifacts, tools, labs, and resources.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
   <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/home-tune.css">
 </head>
+
 <body data-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" id="siteHeader">
-  <nav class="navbar" aria-label="Primary navigation">
-    <a class="brand" href="/">
-      <span class="brand-mark">DF</span>
-      <span class="brand-text">Forensic Knowledge System</span>
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="/">Home</a>
-      <a href="/pages/fundamentals.html">Fundamentals</a>
-      <a href="/pages/evidence.html">Evidence</a>
-      <a href="/pages/data-collection.html">Collection</a>
-      <a href="/pages/data-sources.html">Sources</a>
-      <a href="/pages/tools.html">Tools</a>
-      <a href="/pages/labs.html">Labs</a>
-      <a href="/pages/resources.html">Resources</a>
-    </div>
-  </nav>
-</header>
-  <main id="main">
+  <div class="scroll-progress" id="scrollProgress"></div>
 
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark">DF</span>
+        <span class="brand-text">Forensic Knowledge System</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/pages/fundamentals.html">Fundamentals</a>
+        <a href="/pages/evidence.html">Evidence</a>
+        <a href="/pages/data-collection.html">Collection</a>
+        <a href="/pages/data-sources.html">Sources</a>
+        <a href="/pages/tools.html">Tools</a>
+        <a href="/pages/labs.html">Labs</a>
+        <a href="/pages/resources.html">Resources</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
     <section class="hero hero-home">
       <div class="hero-noise"></div>
+
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Digital Forensics • Incident Response • Evidence Integrity</p>
-          <h1>A professional forensic knowledge system for learning real investigation workflows.</h1>
+          <p class="eyebrow">DIGITAL FORENSICS • INCIDENT RESPONSE • EVIDENCE INTEGRITY</p>
+
+<h1>
+  A professional forensic system for
+  <span class="typewriter-wrap">
+    <span id="typewriterText">investigating</span>
+  </span>
+  evidence.
+</h1>
+
           <p class="hero-lead">
-            Explore digital evidence handling, acquisition strategy, artifact analysis, forensic tools,
-            and practical labs through a structured platform designed for serious DFIR learning.
+            Learn how investigators preserve, acquire, examine, correlate, and explain digital evidence
+            through a structured DFIR workflow that is beginner-friendly, technically grounded, and useful
+            for both academic learning and resume-level project demonstration.
           </p>
+
+          <ul class="hero-points">
+            <li>Clear explanation of evidence handling, hashing, and chain of custody</li>
+            <li>Practical artifact coverage across Windows, Linux, memory, network, cloud, and mobile</li>
+            <li>Tool-focused learning with labs, references, and investigation notes</li>
+          </ul>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="/pages/fundamentals.html">Start Learning</a>
             <a class="btn btn-secondary" href="/pages/tools.html">Explore Tools</a>
           </div>
-          <div class="hero-metrics">
-            <div><strong>8</strong><span>Core Sections</span></div>
-            <div><strong>17+</strong><span>DFIR Tools</span></div>
-            <div><strong>10+</strong><span>Practice Labs</span></div>
+
+          <div class="hero-metrics" aria-label="Project highlights">
+            <div>
+              <strong>8</strong>
+              <span>Core Sections</span>
+            </div>
+            <div>
+              <strong>17+</strong>
+              <span>DFIR Tools</span>
+            </div>
+            <div>
+              <strong>10+</strong>
+              <span>Practice Labs</span>
+            </div>
           </div>
         </div>
+
         <aside class="system-panel reveal delay-1" aria-label="Forensic workflow summary">
           <div class="panel-header">
             <span class="status-dot"></span>
             <span class="mono">case-workflow.trace</span>
           </div>
+
           <div class="trace-list">
-            <div><span>01</span><p>Identify scope, affected systems, and evidence priorities.</p></div>
-            <div><span>02</span><p>Preserve volatile and non-volatile data using verified methods.</p></div>
-            <div><span>03</span><p>Validate integrity through cryptographic hashing and documentation.</p></div>
-            <div><span>04</span><p>Analyze artifacts across disk, memory, logs, network, cloud, and mobile.</p></div>
-            <div><span>05</span><p>Reconstruct timeline, explain impact, and report findings clearly.</p></div>
+            <div>
+              <span>01</span>
+              <p>Define case scope, affected assets, suspected activity, and evidence priorities.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <p>Preserve volatile and non-volatile data before routine activity overwrites artifacts.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <p>Acquire verified copies with proper imaging, hashing, and documentation.</p>
+            </div>
+            <div>
+              <span>04</span>
+              <p>Analyze artifacts from disk, memory, logs, cloud platforms, and network captures.</p>
+            </div>
+            <div>
+              <span>05</span>
+              <p>Reconstruct events, explain findings, state limitations, and report clearly.</p>
+            </div>
           </div>
         </aside>
       </div>
@@ -78,64 +132,70 @@
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">Structured Learning</p>
-          <h2>Designed like a forensic investigation notebook, not a generic security landing page.</h2>
+          <h2>Built like a forensic investigation notebook, not a generic cybersecurity template.</h2>
           <p>
-            Each section explains what the topic means, why it matters, how investigators use it,
-            common artifacts, practical notes, and mistakes that beginners must avoid.
+            Each section explains what the topic is, why it matters, how it is used in real cases,
+            what artifacts support it, which tools are commonly used, and what mistakes beginners should avoid.
           </p>
         </div>
+
         <div class="feature-grid">
           <article class="feature-card reveal">
             <span class="card-index">01</span>
             <h3>Forensic Fundamentals</h3>
             <p>
-              Learn how digital forensics differs from incident response, threat hunting, SOC monitoring,
-              malware analysis, and corporate investigations.
+              Understand digital forensics, evidence preservation, incident reconstruction, attribution limits,
+              and the difference between DFIR, malware analysis, threat hunting, and SOC work.
             </p>
             <a href="/pages/fundamentals.html">Open fundamentals</a>
           </article>
+
           <article class="feature-card reveal delay-1">
             <span class="card-index">02</span>
             <h3>Evidence Handling</h3>
             <p>
-              Understand write blockers, hashing, chain of custody, evidence admissibility,
-              documentation, and legal considerations including Indian cyber law context.
+              Learn write blockers, hashing, chain of custody, documentation, admissibility,
+              Section 65B, IT Act relevance, and contamination risks.
             </p>
             <a href="/pages/evidence.html">Review evidence</a>
           </article>
+
           <article class="feature-card reveal delay-2">
             <span class="card-index">03</span>
             <h3>Collection Strategy</h3>
             <p>
-              Compare live and dead acquisition, learn order of volatility, RAM capture,
-              imaging formats, triage methods, and evidence alteration risks.
+              Compare live and dead acquisition, order of volatility, RAM capture, imaging formats,
+              triage methods, and when not to shut down a compromised system.
             </p>
             <a href="/pages/data-collection.html">Study collection</a>
           </article>
+
           <article class="feature-card reveal">
             <span class="card-index">04</span>
             <h3>Artifact Sources</h3>
             <p>
-              Explore Windows, Linux, network, memory, cloud, and mobile artifacts that reveal user,
-              system, application, and attacker activity.
+              Explore Windows, Linux, memory, network, cloud, and mobile artifacts used to reconstruct
+              user activity, attacker behavior, persistence, and execution traces.
             </p>
             <a href="/pages/data-sources.html">Explore sources</a>
           </article>
+
           <article class="feature-card reveal delay-1">
             <span class="card-index">05</span>
             <h3>Tool Reference</h3>
             <p>
-              Study Autopsy, FTK Imager, Volatility 3, Wireshark, RegRipper,
-              Eric Zimmerman tools, ALEAPP, Cellebrite, REMnux, CAINE, and more.
+              Study where Autopsy, FTK Imager, Volatility 3, Wireshark, RegRipper, Zimmerman tools,
+              ALEAPP, Cellebrite, CAINE, and REMnux fit into an investigation.
             </p>
             <a href="/pages/tools.html">View tools</a>
           </article>
+
           <article class="feature-card reveal delay-2">
             <span class="card-index">06</span>
             <h3>Practical Labs</h3>
             <p>
-              Use TryHackMe-style practice rooms to develop workflow confidence in disk analysis,
-              memory forensics, packet analysis, and incident triage.
+              Build workflow confidence using guided lab resources for packet analysis, disk examination,
+              Windows artifacts, memory forensics, and incident triage.
             </p>
             <a href="/pages/labs.html">Open labs</a>
           </article>
@@ -147,31 +207,67 @@
       <div class="container split-layout">
         <div class="reveal">
           <p class="eyebrow">Investigation Mindset</p>
-          <h2>Forensics is not just tool usage. It is controlled reasoning over preserved evidence.</h2>
+          <h2>Good forensics is disciplined reasoning over preserved evidence.</h2>
+
           <p>
-            A strong investigator does not simply click through tools. They ask what evidence can prove,
-            what evidence cannot prove, how data could have changed, and whether conclusions are supported
-            by repeatable observations.
+            Investigators should not rely on a single artifact or blindly trust a tool output.
+            They must ask what the evidence proves, what it does not prove, how it could have changed,
+            and whether the same conclusion is supported by multiple independent traces.
           </p>
+
           <p>
-            This website is organized around the forensic lifecycle: scoping, preservation, acquisition,
-            verification, analysis, correlation, reporting, and presentation. The goal is to help beginners
-            understand both technical artifacts and professional investigation discipline.
+            This platform follows the forensic lifecycle: scope the case, preserve evidence, acquire data,
+            verify integrity, analyze artifacts, correlate timelines, document findings, and present conclusions.
           </p>
+
+          <ul class="content-checklist">
+            <li>Preserve the original source before analysis begins</li>
+            <li>Use hashes to validate every acquired copy</li>
+            <li>Document tools, timestamps, versions, and examiner actions</li>
+            <li>Report findings with limitations, not assumptions</li>
+          </ul>
         </div>
+
         <div class="note-stack reveal delay-1">
           <div class="note-card">
             <h3>Preserve first</h3>
-            <p>Before analysis, protect the original evidence from accidental modification.</p>
+            <p>Protect original evidence from accidental modification, metadata changes, or overwrite.</p>
           </div>
+
           <div class="note-card">
             <h3>Verify every copy</h3>
-            <p>Use hashes to prove that acquired images and exported files remain unchanged.</p>
+            <p>Cryptographic hashes help prove that images and exported evidence remain unchanged.</p>
           </div>
+
           <div class="note-card">
             <h3>Document decisions</h3>
-            <p>Record tools, versions, timestamps, commands, hashes, and examiner actions.</p>
+            <p>Record commands, tools, hashes, timestamps, and rationale behind each investigative step.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-focus">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Real-World Relevance</p>
+          <h2>Attackers hide actions. Forensics follows the traces they leave behind.</h2>
+          <p>
+            Even when files are deleted or tools are renamed, investigators can still rely on metadata,
+            event logs, registry keys, browser traces, network records, memory artifacts, audit logs,
+            and timestamps to reconstruct what happened.
+          </p>
+        </div>
+
+        <div class="evidence-strip">
+          <div class="evidence-pill reveal">MFT Records</div>
+          <div class="evidence-pill reveal delay-1">Registry Hives</div>
+          <div class="evidence-pill reveal delay-2">RAM Artifacts</div>
+          <div class="evidence-pill reveal">DNS Logs</div>
+          <div class="evidence-pill reveal delay-1">CloudTrail</div>
+          <div class="evidence-pill reveal delay-2">PCAP</div>
+          <div class="evidence-pill reveal">Prefetch</div>
+          <div class="evidence-pill reveal delay-1">Event Logs</div>
         </div>
       </div>
     </section>
@@ -180,70 +276,79 @@
       <div class="container timeline">
         <div class="section-heading reveal">
           <p class="eyebrow">Core Workflow</p>
-          <h2>A practical forensic process used across academic, corporate, and law-enforcement contexts.</h2>
+          <h2>A practical process used in academic, corporate, and law-enforcement investigations.</h2>
         </div>
+
         <div class="timeline-grid">
           <article class="timeline-item reveal">
             <span>Scope</span>
             <h3>Define the case question</h3>
-            <p>Identify systems, users, time windows, business impact, suspected activity, and evidence priority.</p>
+            <p>Identify systems, users, time windows, suspected activity, impact, and evidence priority.</p>
           </article>
+
           <article class="timeline-item reveal">
             <span>Preserve</span>
             <h3>Protect evidence integrity</h3>
-            <p>Isolate systems carefully, capture volatile evidence when needed, and avoid unnecessary changes.</p>
+            <p>Isolate systems carefully, capture volatile data when needed, and avoid unnecessary changes.</p>
           </article>
+
           <article class="timeline-item reveal">
             <span>Acquire</span>
             <h3>Create verified copies</h3>
-            <p>Image disks, export logs, capture memory, collect cloud audit trails, and calculate hashes.</p>
+            <p>Image disks, export logs, capture memory, collect cloud records, and calculate hashes.</p>
           </article>
+
           <article class="timeline-item reveal">
             <span>Analyze</span>
             <h3>Correlate artifacts</h3>
-            <p>Build timelines from logs, filesystem metadata, registry keys, browser traces, memory, and packets.</p>
+            <p>Build timelines from logs, registry data, metadata, browser traces, memory, and packets.</p>
           </article>
+
           <article class="timeline-item reveal">
             <span>Report</span>
-            <h3>Explain findings</h3>
-            <p>Write defensible conclusions, limitations, evidence references, and reproducible methodology.</p>
+            <h3>Explain findings clearly</h3>
+            <p>Write defensible conclusions supported by evidence references, method, and limitations.</p>
           </article>
         </div>
       </div>
     </section>
-
   </main>
+
   <footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <a class="brand footer-brand" href="/">
-        <span class="brand-mark">DF</span>
-        <span class="brand-text">Forensic Knowledge System</span>
-      </a>
-      <p>
-        A calm, structured, technical learning platform for digital forensics,
-        incident response, evidence handling, and investigation workflows.
-      </p>
+    <div class="footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <span class="brand-mark">DF</span>
+          <span class="brand-text">Forensic Knowledge System</span>
+        </a>
+        <p>
+          A calm, structured, technical learning platform for digital forensics,
+          incident response, evidence handling, and investigation workflows.
+        </p>
+      </div>
+
+      <div>
+        <h3>Learning Paths</h3>
+        <a href="/pages/fundamentals.html">Forensic Foundations</a>
+        <a href="/pages/data-collection.html">Acquisition Workflow</a>
+        <a href="/pages/data-sources.html">Artifact Analysis</a>
+        <a href="/pages/tools.html">Tool Familiarity</a>
+      </div>
+
+      <div>
+        <h3>Practice</h3>
+        <a href="/pages/labs.html">Guided Labs</a>
+        <a href="/pages/evidence.html">Evidence Handling</a>
+        <a href="/pages/resources.html">Trusted References</a>
+      </div>
     </div>
-    <div>
-      <h3>Learning Paths</h3>
-      <a href="/pages/fundamentals.html">Forensic Foundations</a>
-      <a href="/pages/data-collection.html">Acquisition Workflow</a>
-      <a href="/pages/data-sources.html">Artifact Analysis</a>
-      <a href="/pages/tools.html">Tool Familiarity</a>
+
+    <div class="footer-bottom">
+      <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
+      <span class="mono">Preserve • Verify • Document • Analyze</span>
     </div>
-    <div>
-      <h3>Practice</h3>
-      <a href="/pages/labs.html">Guided Labs</a>
-      <a href="/pages/evidence.html">Evidence Handling</a>
-      <a href="/pages/resources.html">Trusted References</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
-    <span class="mono">Preserve • Verify • Document • Analyze</span>
-  </div>
-</footer>
+  </footer>
+
   <script src="/js/navbar.js"></script>
   <script src="/js/scroll-animations.js"></script>
   <script src="/js/main.js"></script>
