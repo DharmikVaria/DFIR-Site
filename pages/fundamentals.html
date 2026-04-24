@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentals | Digital Forensics Knowledge System</title>
+  <meta name="description" content="Detailed digital forensics fundamentals, methodology, goals, incident reconstruction, and related security disciplines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+</head>
+<body data-page="fundamentals">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="/">
+      <span class="brand-mark">DF</span>
+      <span class="brand-text">Forensic Knowledge System</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/pages/fundamentals.html">Fundamentals</a>
+      <a href="/pages/evidence.html">Evidence</a>
+      <a href="/pages/data-collection.html">Collection</a>
+      <a href="/pages/data-sources.html">Sources</a>
+      <a href="/pages/tools.html">Tools</a>
+      <a href="/pages/labs.html">Labs</a>
+      <a href="/pages/resources.html">Resources</a>
+    </div>
+  </nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container narrow reveal">
+        <p class="eyebrow">Foundation Layer</p>
+        <h1>Digital Forensics Fundamentals</h1>
+        <p>
+          Digital forensics is the disciplined identification, preservation, acquisition, examination,
+          analysis, and presentation of digital evidence. It focuses on facts that can be supported
+          by artifacts, timestamps, logs, files, metadata, and repeatable technical observations.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <article class="content-card reveal">
+          <h2>What digital forensics means</h2>
+          <p>
+            Digital forensics is the process of investigating data stored, transmitted, or processed
+            by digital systems. The evidence can exist on hard drives, SSDs, RAM, mobile devices,
+            network captures, cloud platforms, enterprise logs, removable media, browser profiles,
+            email systems, and application databases.
+          </p>
+          <p>
+            The purpose is not merely to recover deleted files. A forensic investigation attempts to
+            answer structured questions: what happened, when it happened, which systems were affected,
+            which user or process performed an action, what data was accessed, and what evidence
+            supports or limits those conclusions.
+          </p>
+          <p>
+            In professional investigations, every action must be defensible. The examiner must preserve
+            evidence, minimize alteration, document methodology, validate findings, and explain results
+            clearly to technical and non-technical audiences.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Goals of forensic investigation</h2>
+          <p>
+            The primary goal is accurate incident reconstruction. Investigators collect and correlate
+            evidence from multiple sources to build a timeline of events. This timeline may include
+            logon activity, process execution, file creation, network connections, malware execution,
+            archive creation, cloud downloads, USB insertion, browser activity, and data exfiltration.
+          </p>
+          <ul class="clean-list">
+            <li>Preserve original evidence and prove integrity using hashes.</li>
+            <li>Determine the initial access vector and attacker actions.</li>
+            <li>Identify compromised accounts, hosts, files, and applications.</li>
+            <li>Recover deleted, hidden, encrypted, or obfuscated traces where possible.</li>
+            <li>Separate facts from assumptions and clearly state confidence level.</li>
+            <li>Produce a report that supports legal, disciplinary, or remediation decisions.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Incident reconstruction</h2>
+          <p>
+            Incident reconstruction is the analytical process of connecting individual artifacts into
+            a coherent sequence. A single artifact rarely proves the full story. For example, a Prefetch
+            file may indicate that a program executed, but it does not alone prove who launched it or why.
+            Investigators correlate Prefetch with Event Logs, registry keys, user profile activity,
+            command history, file metadata, browser downloads, memory evidence, and network logs.
+          </p>
+          <p>
+            A strong timeline uses normalized timestamps and accounts for time zone differences,
+            clock drift, anti-forensic behavior, log rotation, overwritten records, and application-specific
+            timestamp formats. The final explanation must remain tied to evidence, not speculation.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Attribution limits</h2>
+          <p>
+            Digital evidence can show that an account, process, device, IP address, or credential was used.
+            It does not always prove the human behind the activity. Accounts can be shared, stolen, scripted,
+            automated, or accessed through remote administration tools. IP addresses can be NATed, proxied,
+            VPN-routed, or reused by multiple users.
+          </p>
+          <p>
+            Good forensic reporting avoids overclaiming. Instead of saying “User X stole the file,” a more
+            defensible conclusion may be: “The account assigned to User X accessed and compressed the file
+            at 14:22 IST, and the same session created an outbound connection to the listed cloud storage endpoint.”
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Evidence preservation</h2>
+          <p>
+            Preservation means protecting evidence from avoidable change. Digital evidence is fragile because
+            normal system activity can modify timestamps, logs, caches, temporary files, registry data, and memory.
+            Even opening a file can alter access metadata on some systems. Booting a suspect machine can overwrite
+            logs and change system state.
+          </p>
+          <p>
+            Investigators therefore prefer verified forensic images, read-only access, write blockers, documented
+            acquisition steps, and repeatable analysis on copies rather than original media. In live response,
+            some changes are unavoidable, but the examiner must document exactly what was done and why.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Forensic methodology</h2>
+          <ol class="ordered-list">
+            <li><strong>Identification:</strong> determine potential evidence sources and investigation scope.</li>
+            <li><strong>Preservation:</strong> isolate and protect evidence from alteration or loss.</li>
+            <li><strong>Collection:</strong> acquire data using appropriate live, dead, or triage methods.</li>
+            <li><strong>Verification:</strong> calculate hashes and validate that forensic copies are reliable.</li>
+            <li><strong>Examination:</strong> extract relevant files, metadata, logs, registry data, and artifacts.</li>
+            <li><strong>Analysis:</strong> correlate evidence, build timelines, test hypotheses, and identify gaps.</li>
+            <li><strong>Reporting:</strong> document findings, limitations, evidence references, and recommendations.</li>
+          </ol>
+        </article>
+
+        <article class="content-card wide reveal">
+          <h2>Digital forensics compared with related security functions</h2>
+          <div class="comparison-table">
+            <div class="table-row table-head">
+              <span>Function</span><span>Primary focus</span><span>Typical output</span>
+            </div>
+            <div class="table-row">
+              <span>Digital Forensics</span><span>Evidence preservation and reconstruction of events</span><span>Forensic report, timeline, evidence findings</span>
+            </div>
+            <div class="table-row">
+              <span>Incident Response</span><span>Containment, eradication, recovery, and business continuity</span><span>Response actions, lessons learned, remediation plan</span>
+            </div>
+            <div class="table-row">
+              <span>Malware Analysis</span><span>Understanding malicious code behavior and capability</span><span>IOCs, behavior summary, detection logic</span>
+            </div>
+            <div class="table-row">
+              <span>Threat Hunting</span><span>Proactive search for suspicious activity</span><span>Hypotheses tested, detections, hunting leads</span>
+            </div>
+            <div class="table-row">
+              <span>SOC Analysis</span><span>Alert triage and monitoring</span><span>Escalations, alert notes, incident tickets</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Legal and corporate use cases</h2>
+          <p>
+            Digital forensics supports criminal investigations, civil disputes, insider threat cases,
+            intellectual property theft, ransomware response, employee misconduct inquiries, fraud analysis,
+            data breach investigations, insurance claims, and regulatory reporting.
+          </p>
+          <p>
+            Corporate investigations often prioritize containment, impact assessment, business risk, and policy
+            enforcement. Legal investigations require stronger emphasis on chain of custody, admissibility,
+            examiner neutrality, repeatability, and preservation of original evidence.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Beginner mistakes to avoid</h2>
+          <ul class="clean-list">
+            <li>Analyzing the original evidence directly instead of a verified copy.</li>
+            <li>Failing to record timestamps, commands, tool versions, and hash values.</li>
+            <li>Assuming an artifact proves intent without supporting evidence.</li>
+            <li>Ignoring time zones, clock drift, and timestamp format differences.</li>
+            <li>Using only one tool and not validating important findings independently.</li>
+            <li>Writing conclusions that are stronger than the evidence supports.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/">
+        <span class="brand-mark">DF</span>
+        <span class="brand-text">Forensic Knowledge System</span>
+      </a>
+      <p>
+        A calm, structured, technical learning platform for digital forensics,
+        incident response, evidence handling, and investigation workflows.
+      </p>
+    </div>
+    <div>
+      <h3>Learning Paths</h3>
+      <a href="/pages/fundamentals.html">Forensic Foundations</a>
+      <a href="/pages/data-collection.html">Acquisition Workflow</a>
+      <a href="/pages/data-sources.html">Artifact Analysis</a>
+      <a href="/pages/tools.html">Tool Familiarity</a>
+    </div>
+    <div>
+      <h3>Practice</h3>
+      <a href="/pages/labs.html">Guided Labs</a>
+      <a href="/pages/evidence.html">Evidence Handling</a>
+      <a href="/pages/resources.html">Trusted References</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
+    <span class="mono">Preserve • Verify • Document • Analyze</span>
+  </div>
+</footer>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/scroll-animations.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

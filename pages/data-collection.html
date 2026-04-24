@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Collection | Digital Forensics Knowledge System</title>
+  <meta name="description" content="Live forensics, dead forensics, order of volatility, RAM capture, imaging formats, and triage collection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+</head>
+<body data-page="data-collection">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="/">
+      <span class="brand-mark">DF</span>
+      <span class="brand-text">Forensic Knowledge System</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/pages/fundamentals.html">Fundamentals</a>
+      <a href="/pages/evidence.html">Evidence</a>
+      <a href="/pages/data-collection.html">Collection</a>
+      <a href="/pages/data-sources.html">Sources</a>
+      <a href="/pages/tools.html">Tools</a>
+      <a href="/pages/labs.html">Labs</a>
+      <a href="/pages/resources.html">Resources</a>
+    </div>
+  </nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container narrow reveal">
+        <p class="eyebrow">Acquisition Layer</p>
+        <h1>Data Collection: Live, Dead, and Triage Forensics</h1>
+        <p>
+          Collection strategy determines what evidence survives and how reliable later analysis will be.
+          Investigators must balance evidence preservation, business urgency, volatility, encryption,
+          malware behavior, and legal authority.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <article class="content-card reveal">
+          <h2>What data collection means</h2>
+          <p>
+            Data collection is the process of acquiring digital evidence from systems, storage devices,
+            applications, networks, cloud services, and memory. The goal is to obtain data in a manner that
+            preserves integrity and supports later examination.
+          </p>
+          <p>
+            Collection is not a one-size-fits-all step. A ransomware investigation, insider theft case,
+            malware infection, cloud account compromise, and mobile device examination may each require
+            different acquisition priorities.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Live forensics</h2>
+          <p>
+            Live forensics is performed while a system is powered on and running. It is used when volatile
+            evidence may disappear if the system is shut down. Examples include RAM contents, running processes,
+            active network connections, logged-in users, mounted encrypted volumes, temporary files, malware
+            running only in memory, and unsaved command output.
+          </p>
+          <p>
+            Live collection is useful but invasive. Every command executed can alter memory, process state,
+            logs, shell history, filesystem metadata, and network activity. Therefore, live response must be
+            purposeful, minimal, and carefully documented.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Dead or static forensics</h2>
+          <p>
+            Dead forensics is performed on a powered-off system or detached storage device. The examiner images
+            the disk using a forensic workstation, preferably with a write blocker. Analysis is then performed
+            on the image, not the original media.
+          </p>
+          <p>
+            Static acquisition is ideal when volatile evidence is not critical or when preserving the storage
+            state is the top priority. It is commonly used for deleted file recovery, timeline analysis, file
+            system examination, registry analysis, browser history, and user activity reconstruction.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Order of volatility</h2>
+          <p>
+            The order of volatility ranks evidence by how quickly it can change or disappear. Highly volatile
+            data should be collected first when it is relevant and legally authorized.
+          </p>
+          <ol class="ordered-list">
+            <li>CPU registers and cache data.</li>
+            <li>RAM, running processes, open sockets, logged-in users.</li>
+            <li>Temporary filesystem data and swap/pagefile content.</li>
+            <li>Local disk data and application artifacts.</li>
+            <li>Remote logs, cloud logs, backups, and archived data.</li>
+          </ol>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>RAM capture</h2>
+          <p>
+            RAM can reveal processes, injected code, network connections, encryption keys, command history,
+            credentials, malware unpacked in memory, and artifacts that never touched disk. Tools such as
+            WinPmem, Magnet RAM Capture, DumpIt, Belkasoft RAM Capturer, and Linux memory acquisition methods
+            may be used depending on system type and policy.
+          </p>
+          <p>
+            Memory capture must be done before shutdown. The investigator should record tool name, version,
+            command line, start time, end time, output hash, and storage destination. Capturing memory to the
+            suspect disk should be avoided when possible because it can overwrite evidence.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Disk imaging</h2>
+          <p>
+            Disk imaging creates a sector-by-sector or logical copy of storage media. A physical image captures
+            the full device, including unallocated space and slack space. A logical image captures selected
+            files and folders, usually when full imaging is impractical.
+          </p>
+          <p>
+            Full physical images are valuable because they preserve deleted files, filesystem metadata, partition
+            structures, volume shadow copies, and hidden areas. Logical collection is faster but may miss deleted
+            data and low-level artifacts.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Forensic image formats</h2>
+          <div class="mini-table">
+            <div><strong>RAW / dd</strong><span>Simple bitstream image. Widely supported, but lacks rich metadata and compression.</span></div>
+            <div><strong>E01</strong><span>Expert Witness format. Supports compression, metadata, segmentation, and integrity checks.</span></div>
+            <div><strong>AFF</strong><span>Advanced Forensic Format. Open format designed to store image data and metadata.</span></div>
+          </div>
+          <p>
+            The best format depends on tool compatibility, case requirements, storage capacity, verification
+            needs, and organizational policy.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Hash verification</h2>
+          <p>
+            Hash verification confirms that the acquired image matches the source data as captured. Investigators
+            should calculate and record hash values during acquisition and after transfer. If segmented images are
+            used, the tool should verify the entire image set.
+          </p>
+          <p>
+            A mismatch does not automatically prove tampering, but it must be investigated. Causes may include
+            acquisition error, device instability, write access, incomplete copy, bad sectors, or wrong source media.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Triage collection</h2>
+          <p>
+            Triage collection gathers high-value evidence quickly when full imaging is too slow or disruptive.
+            It may collect event logs, registry hives, browser data, prefetch files, user folders, running process
+            data, network connections, persistence locations, and recent file activity.
+          </p>
+          <p>
+            Triage is useful during enterprise incidents where many systems must be assessed rapidly. It should
+            not be confused with complete forensic acquisition. It is a prioritization method, not a replacement
+            for deeper analysis when the case requires it.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>When not to shut down a system</h2>
+          <ul class="clean-list">
+            <li>Full disk encryption is active and keys may only exist in memory.</li>
+            <li>Malware is memory-resident and may disappear after power loss.</li>
+            <li>Active network connections may identify command-and-control infrastructure.</li>
+            <li>Logged-in cloud sessions or mounted remote drives may be relevant.</li>
+            <li>Running processes, open files, or volatile logs are essential to the case question.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Risks of altering evidence</h2>
+          <p>
+            Evidence alteration can occur through booting, logging in, opening files, copying data incorrectly,
+            installing tools, writing output to the suspect disk, or allowing automated updates to run. Even
+            well-intentioned actions can change timestamps and logs.
+          </p>
+          <p>
+            When change is unavoidable, the answer is not to hide it but to document it. Record the reason,
+            action taken, time, tool, expected impact, and any observed system changes.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Beginner collection mistakes</h2>
+          <ul class="clean-list">
+            <li>Turning off a system before considering encryption or volatile evidence.</li>
+            <li>Capturing memory after running many unnecessary commands.</li>
+            <li>Storing acquisition output on the suspect drive.</li>
+            <li>Forgetting to hash evidence and acquired images.</li>
+            <li>Using logical copies when deleted data or filesystem metadata matters.</li>
+            <li>Failing to document bad sectors, acquisition errors, or tool warnings.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/">
+        <span class="brand-mark">DF</span>
+        <span class="brand-text">Forensic Knowledge System</span>
+      </a>
+      <p>
+        A calm, structured, technical learning platform for digital forensics,
+        incident response, evidence handling, and investigation workflows.
+      </p>
+    </div>
+    <div>
+      <h3>Learning Paths</h3>
+      <a href="/pages/fundamentals.html">Forensic Foundations</a>
+      <a href="/pages/data-collection.html">Acquisition Workflow</a>
+      <a href="/pages/data-sources.html">Artifact Analysis</a>
+      <a href="/pages/tools.html">Tool Familiarity</a>
+    </div>
+    <div>
+      <h3>Practice</h3>
+      <a href="/pages/labs.html">Guided Labs</a>
+      <a href="/pages/evidence.html">Evidence Handling</a>
+      <a href="/pages/resources.html">Trusted References</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
+    <span class="mono">Preserve • Verify • Document • Analyze</span>
+  </div>
+</footer>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/scroll-animations.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

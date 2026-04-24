@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence | Digital Forensics Knowledge System</title>
+  <meta name="description" content="Evidence integrity, chain of custody, hashing, write blockers, admissibility, and Indian legal context.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+</head>
+<body data-page="evidence">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="/">
+      <span class="brand-mark">DF</span>
+      <span class="brand-text">Forensic Knowledge System</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/pages/fundamentals.html">Fundamentals</a>
+      <a href="/pages/evidence.html">Evidence</a>
+      <a href="/pages/data-collection.html">Collection</a>
+      <a href="/pages/data-sources.html">Sources</a>
+      <a href="/pages/tools.html">Tools</a>
+      <a href="/pages/labs.html">Labs</a>
+      <a href="/pages/resources.html">Resources</a>
+    </div>
+  </nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container narrow reveal">
+        <p class="eyebrow">Integrity Layer</p>
+        <h1>Evidence Handling and Chain of Custody</h1>
+        <p>
+          Evidence handling is the foundation that makes forensic analysis trustworthy. A technically accurate
+          finding can become weak if the investigator cannot prove where the evidence came from, how it was
+          preserved, who handled it, and whether it remained unchanged.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <article class="content-card reveal">
+          <h2>What digital evidence is</h2>
+          <p>
+            Digital evidence is any data stored or transmitted by a digital system that may help establish facts
+            in an investigation. It includes files, metadata, logs, emails, memory dumps, registry hives, browser
+            records, cloud audit events, mobile databases, network packets, screenshots, hashes, and tool exports.
+          </p>
+          <p>
+            Evidence must be relevant, reliable, and explainable. Investigators must show that evidence was
+            collected from a known source using a controlled process and that analysis was performed on verified
+            copies wherever possible.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Write blockers</h2>
+          <p>
+            A write blocker prevents a forensic workstation from writing data to a suspect storage device.
+            Hardware write blockers sit between the evidence drive and examiner machine, while software
+            write-blocking methods rely on operating system controls. Hardware blockers are generally preferred
+            for high-integrity disk acquisition because they reduce accidental modification risk.
+          </p>
+          <p>
+            Write blockers matter because operating systems may automatically mount drives, create hidden folders,
+            update access timestamps, or write indexing metadata. A blocker helps maintain the original media state
+            while the examiner creates a forensic image.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Hashing and evidence integrity</h2>
+          <p>
+            Hashing produces a fixed-length value from data. In forensics, hash values such as MD5, SHA-1,
+            or SHA-256 are used to verify that an evidence image or exported file has not changed. Although MD5
+            and SHA-1 are no longer collision-resistant for cryptographic trust, they still appear in forensic
+            workflows for legacy comparison. SHA-256 is preferred when strong integrity assurance is needed.
+          </p>
+          <p>
+            A common workflow is to calculate a hash before imaging, after imaging, and during later verification.
+            Matching hashes support the claim that the forensic copy accurately represents the source at the time
+            of acquisition.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Chain of custody</h2>
+          <p>
+            Chain of custody is the documented history of evidence possession, transfer, storage, access, and
+            handling. It should answer: who collected the evidence, when it was collected, where it came from,
+            how it was packaged, where it was stored, who accessed it, why access occurred, and when it was returned
+            or transferred.
+          </p>
+          <p>
+            A weak chain of custody can create doubt even if the technical analysis is correct. The record should
+            include unique evidence identifiers, device descriptions, serial numbers, photographs, seal numbers,
+            hash values, examiner names, dates, times, and signatures where required by policy.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Admissibility and reliability</h2>
+          <p>
+            Evidence admissibility depends on jurisdiction and case context. Courts commonly consider whether
+            evidence is relevant, authentic, reliable, and obtained legally. The examiner must be able to explain
+            the tools and methods used, demonstrate that evidence was preserved, and show that conclusions follow
+            from the data.
+          </p>
+          <p>
+            Corporate disciplinary cases may not follow the exact same courtroom rules, but they still require
+            careful documentation because findings may later support legal action, insurance claims, or regulatory
+            reporting.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Indian legal context</h2>
+          <p>
+            In India, electronic records may require compliance with Section 65B of the Indian Evidence Act for
+            admissibility of electronic evidence. A Section 65B certificate is commonly used to certify the manner
+            in which electronic records were produced and the reliability of the computer output.
+          </p>
+          <p>
+            The Information Technology Act, 2000 and the IT Amendment Act, 2008 provide legal recognition to
+            electronic records and address cyber offences such as unauthorized access, identity theft, violation
+            of privacy, and damage to computer systems. Forensic documentation should be prepared with awareness
+            of organizational policy and applicable legal requirements.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Daubert Standard and Best Evidence Rule</h2>
+          <p>
+            The Daubert Standard, used in the United States, focuses on reliability of expert testimony. It considers
+            whether a method can be tested, has been peer reviewed, has a known error rate, uses standards, and is
+            generally accepted in the relevant field.
+          </p>
+          <p>
+            The Best Evidence Rule generally prefers original evidence when the content of a record is disputed.
+            In digital forensics, verified forensic images and properly authenticated duplicates are often used
+            because direct analysis of original media may risk alteration.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Evidence contamination risks</h2>
+          <ul class="clean-list">
+            <li>Booting a suspect system and changing logs, timestamps, caches, or memory state.</li>
+            <li>Connecting evidence media without a write blocker.</li>
+            <li>Running unverified tools on original evidence.</li>
+            <li>Mixing evidence from different cases or failing to label devices clearly.</li>
+            <li>Allowing unauthorized people to access evidence storage.</li>
+            <li>Exporting files without preserving metadata and source path references.</li>
+          </ul>
+        </article>
+
+        <article class="content-card wide reveal">
+          <h2>Documentation checklist</h2>
+          <div class="check-grid">
+            <div><strong>Evidence ID</strong><span>Unique case reference for each item.</span></div>
+            <div><strong>Source details</strong><span>Device type, serial number, user, location, condition.</span></div>
+            <div><strong>Acquisition method</strong><span>Tool, version, settings, image format, commands.</span></div>
+            <div><strong>Integrity values</strong><span>MD5, SHA-1, SHA-256, image verification logs.</span></div>
+            <div><strong>Handler record</strong><span>Every transfer, access, storage event, date, time, person.</span></div>
+            <div><strong>Analysis notes</strong><span>Findings, limitations, screenshots, exported artifacts.</span></div>
+          </div>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Common documentation mistakes</h2>
+          <p>
+            Beginners often document only final findings and forget to document process. That is risky because
+            forensic conclusions must be reproducible. Missing tool versions, missing timezone references, unclear
+            file paths, undocumented exports, and absent hash values make it harder to defend the work.
+          </p>
+          <p>
+            A good forensic note should allow another trained examiner to understand what was done, repeat the
+            method, and compare results. Notes should separate observations from interpretation.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Practical investigation notes</h2>
+          <p>
+            Treat evidence handling as part of analysis, not as paperwork after analysis. Label devices immediately,
+            photograph physical condition, calculate hashes early, store originals securely, and perform analysis
+            on copies. When live response is required, document the reason because live collection changes system
+            state by nature.
+          </p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/">
+        <span class="brand-mark">DF</span>
+        <span class="brand-text">Forensic Knowledge System</span>
+      </a>
+      <p>
+        A calm, structured, technical learning platform for digital forensics,
+        incident response, evidence handling, and investigation workflows.
+      </p>
+    </div>
+    <div>
+      <h3>Learning Paths</h3>
+      <a href="/pages/fundamentals.html">Forensic Foundations</a>
+      <a href="/pages/data-collection.html">Acquisition Workflow</a>
+      <a href="/pages/data-sources.html">Artifact Analysis</a>
+      <a href="/pages/tools.html">Tool Familiarity</a>
+    </div>
+    <div>
+      <h3>Practice</h3>
+      <a href="/pages/labs.html">Guided Labs</a>
+      <a href="/pages/evidence.html">Evidence Handling</a>
+      <a href="/pages/resources.html">Trusted References</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
+    <span class="mono">Preserve • Verify • Document • Analyze</span>
+  </div>
+</footer>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/scroll-animations.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

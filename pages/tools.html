@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools | Digital Forensics Knowledge System</title>
+  <meta name="description" content="Detailed DFIR tool reference covering Autopsy, FTK, Volatility, Wireshark, RegRipper, Zimmerman tools, REMnux, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+</head>
+<body data-page="tools">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="/">
+      <span class="brand-mark">DF</span>
+      <span class="brand-text">Forensic Knowledge System</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/pages/fundamentals.html">Fundamentals</a>
+      <a href="/pages/evidence.html">Evidence</a>
+      <a href="/pages/data-collection.html">Collection</a>
+      <a href="/pages/data-sources.html">Sources</a>
+      <a href="/pages/tools.html">Tools</a>
+      <a href="/pages/labs.html">Labs</a>
+      <a href="/pages/resources.html">Resources</a>
+    </div>
+  </nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container narrow reveal">
+        <p class="eyebrow">Tooling Layer</p>
+        <h1>Digital Forensics Tools Reference</h1>
+        <p>
+          Tools do not replace forensic reasoning. They accelerate acquisition, parsing, searching,
+          correlation, and reporting. A strong examiner understands what each tool extracts, what it may miss,
+          and how to validate important findings.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selection Principle</p>
+          <h2>Use tools according to evidence type, not because they look advanced.</h2>
+          <p>
+            Disk images, memory captures, packet captures, mobile extractions, registry hives, cloud logs,
+            and malware samples require different toolchains. The cards below explain practical beginner use
+            and investigation value for each tool.
+          </p>
+        </div>
+        <div class="tools-grid">
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Autopsy</h3>
+              <span>Disk forensic suite</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Graphical platform for disk image analysis, timeline review, keyword search, file recovery, and artifact extraction.</p>
+              <p><strong>Best used for:</strong> Best for structured examination of disk images in academic, training, and case-review workflows.</p>
+              <p><strong>Beginner use case:</strong> Load a forensic image, generate ingest modules, review web history, deleted files, recent documents, and timelines.</p>
+              <p><strong>Practical forensic value:</strong> Provides a beginner-friendly interface over The Sleuth Kit and helps convert raw evidence into reportable findings.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>FTK</h3>
+              <span>Commercial forensic suite</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows</p>
+              <p><strong>Purpose:</strong> Full forensic analysis platform used for indexing, searching, filtering, email analysis, and large case management.</p>
+              <p><strong>Best used for:</strong> Best for enterprise-scale cases where indexing, review workflows, and reporting are important.</p>
+              <p><strong>Beginner use case:</strong> Import evidence, index the case, search keywords, bookmark relevant files, and export reports.</p>
+              <p><strong>Practical forensic value:</strong> Useful for high-volume evidence review and professional case documentation.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>FTK Imager</h3>
+              <span>Acquisition and preview tool</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows</p>
+              <p><strong>Purpose:</strong> Creates forensic images, previews evidence, exports files, and verifies hashes.</p>
+              <p><strong>Best used for:</strong> Best for disk imaging, quick evidence preview, and hash verification before deeper analysis.</p>
+              <p><strong>Beginner use case:</strong> Attach a drive through a write blocker, create an E01 image, and record MD5/SHA hash values.</p>
+              <p><strong>Practical forensic value:</strong> A practical acquisition tool every beginner should know because it teaches imaging discipline.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Volatility 3</h3>
+              <span>Memory forensics framework</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Analyzes RAM images for processes, network connections, registry hives, DLLs, command lines, and injected code.</p>
+              <p><strong>Best used for:</strong> Best for malware, intrusion, and volatile evidence investigations.</p>
+              <p><strong>Beginner use case:</strong> Run process listing, network scan, DLL listing, and suspicious memory region plugins on a captured memory image.</p>
+              <p><strong>Practical forensic value:</strong> Reveals runtime evidence that disk analysis may miss.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Wireshark</h3>
+              <span>Packet analysis tool</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Inspects packet captures, protocols, streams, files, DNS, HTTP, TLS metadata, and network behavior.</p>
+              <p><strong>Best used for:</strong> Best for detailed packet-level network investigation and protocol learning.</p>
+              <p><strong>Beginner use case:</strong> Open a PCAP, follow TCP streams, filter DNS or HTTP traffic, and identify suspicious endpoints.</p>
+              <p><strong>Practical forensic value:</strong> Helps prove communication patterns and reconstruct network sessions.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>NetworkMiner</h3>
+              <span>Network forensic analyzer</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux via Mono</p>
+              <p><strong>Purpose:</strong> Extracts hosts, files, credentials, sessions, images, and metadata from PCAP files.</p>
+              <p><strong>Best used for:</strong> Best for quick passive network forensic triage.</p>
+              <p><strong>Beginner use case:</strong> Load a PCAP and review hosts, downloaded files, user agents, and credentials detected in traffic.</p>
+              <p><strong>Practical forensic value:</strong> Turns packet data into investigator-friendly artifacts quickly.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Bulk Extractor</h3>
+              <span>Artifact extraction tool</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Scans disk images or files for emails, URLs, credit card patterns, domains, EXIF, and other features.</p>
+              <p><strong>Best used for:</strong> Best for rapid feature extraction from large evidence sets.</p>
+              <p><strong>Beginner use case:</strong> Run it against an image to extract email addresses, URLs, domains, and wordlists.</p>
+              <p><strong>Practical forensic value:</strong> Finds useful leads without requiring full filesystem parsing.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Sleuth Kit</h3>
+              <span>Command-line forensic toolkit</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Provides low-level filesystem tools for listing files, recovering data, and inspecting metadata.</p>
+              <p><strong>Best used for:</strong> Best for transparent, scriptable disk and filesystem analysis.</p>
+              <p><strong>Beginner use case:</strong> Use fls, mactime, istat, and icat to list files, create timelines, inspect inodes, and extract content.</p>
+              <p><strong>Practical forensic value:</strong> Builds strong fundamentals because it exposes what GUI tools automate.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>RegRipper</h3>
+              <span>Registry analysis tool</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux via Perl</p>
+              <p><strong>Purpose:</strong> Parses Windows registry hives using plugins for user activity, USB devices, persistence, and system settings.</p>
+              <p><strong>Best used for:</strong> Best for fast registry triage and targeted artifact extraction.</p>
+              <p><strong>Beginner use case:</strong> Run plugins against NTUSER.DAT, SYSTEM, SOFTWARE, and SAM hives.</p>
+              <p><strong>Practical forensic value:</strong> Extracts high-value Windows evidence in readable form.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Eric Zimmerman Tools</h3>
+              <span>Windows artifact parsers</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows</p>
+              <p><strong>Purpose:</strong> Collection of precise parsers for LNK, Jump Lists, Shellbags, Amcache, ShimCache, MFT, Evtx, and more.</p>
+              <p><strong>Best used for:</strong> Best for modern Windows artifact parsing and timeline generation.</p>
+              <p><strong>Beginner use case:</strong> Parse LNK files, Shellbags, Amcache, and Event Logs, then combine CSV output in Timeline Explorer.</p>
+              <p><strong>Practical forensic value:</strong> Highly trusted in DFIR practice for detailed Windows artifact analysis.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>ALEAPP</h3>
+              <span>Mobile artifact parser</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Parses Android artifacts and generates readable reports from extractions and filesystem dumps.</p>
+              <p><strong>Best used for:</strong> Best for Android application and system artifact review.</p>
+              <p><strong>Beginner use case:</strong> Load an Android extraction and review app databases, account data, location artifacts, and reports.</p>
+              <p><strong>Practical forensic value:</strong> Makes mobile artifact review more accessible for beginners.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Cellebrite UFED</h3>
+              <span>Mobile acquisition platform</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows</p>
+              <p><strong>Purpose:</strong> Commercial tool for acquiring and decoding mobile devices, SIMs, and application data.</p>
+              <p><strong>Best used for:</strong> Best for law enforcement and professional mobile forensic acquisition.</p>
+              <p><strong>Beginner use case:</strong> Acquire a supported device and review decoded messages, calls, media, apps, and locations.</p>
+              <p><strong>Practical forensic value:</strong> Industry-recognized platform for mobile evidence acquisition and decoding.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Guymager</h3>
+              <span>Forensic imaging tool</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Linux</p>
+              <p><strong>Purpose:</strong> Graphical disk imaging tool commonly used on forensic Linux distributions.</p>
+              <p><strong>Best used for:</strong> Best for creating RAW, E01, and AFF images with hashing on Linux.</p>
+              <p><strong>Beginner use case:</strong> Image a suspect drive through a write blocker and verify acquisition hashes.</p>
+              <p><strong>Practical forensic value:</strong> Useful for Linux-based forensic workstations and field imaging.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>dc3dd / dcfldd</h3>
+              <span>Command-line imaging tools</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Linux</p>
+              <p><strong>Purpose:</strong> Enhanced dd-style imaging tools with hashing, progress, verification, and forensic logging features.</p>
+              <p><strong>Best used for:</strong> Best for scriptable disk imaging and controlled acquisition workflows.</p>
+              <p><strong>Beginner use case:</strong> Create a bitstream image while calculating hashes and logging acquisition details.</p>
+              <p><strong>Practical forensic value:</strong> Teaches low-level acquisition control and repeatability.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>Hashdeep / md5deep</h3>
+              <span>Hashing and file audit tools</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Windows, Linux, macOS</p>
+              <p><strong>Purpose:</strong> Computes and audits recursive file hashes for integrity verification and known-file comparison.</p>
+              <p><strong>Best used for:</strong> Best for validating evidence exports and detecting changed files.</p>
+              <p><strong>Beginner use case:</strong> Hash a directory before and after transfer to confirm no files changed.</p>
+              <p><strong>Practical forensic value:</strong> Supports repeatable integrity checks across collections.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>CAINE</h3>
+              <span>Forensic Linux distribution</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Linux live environment</p>
+              <p><strong>Purpose:</strong> Computer Aided INvestigative Environment containing forensic tools for acquisition and analysis.</p>
+              <p><strong>Best used for:</strong> Best for bootable forensic environments and academic lab setups.</p>
+              <p><strong>Beginner use case:</strong> Boot CAINE, mount evidence read-only, image media, and run analysis tools.</p>
+              <p><strong>Practical forensic value:</strong> Provides a ready forensic workstation environment for practical learning.</p>
+            </div>
+          </article>
+
+          <article class="tool-card reveal">
+            <div class="tool-card-top">
+              <h3>REMnux</h3>
+              <span>Malware analysis Linux toolkit</span>
+            </div>
+            <div class="tool-meta">
+              <p><strong>Platform:</strong> Linux virtual machine</p>
+              <p><strong>Purpose:</strong> Toolkit for reverse engineering, malware analysis, network simulation, document analysis, and memory support.</p>
+              <p><strong>Best used for:</strong> Best for malware triage and malicious document or network behavior analysis.</p>
+              <p><strong>Beginner use case:</strong> Analyze suspicious scripts, decode payloads, inspect network indicators, and emulate services.</p>
+              <p><strong>Practical forensic value:</strong> Complements forensics by explaining malicious behavior behind artifacts.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/">
+        <span class="brand-mark">DF</span>
+        <span class="brand-text">Forensic Knowledge System</span>
+      </a>
+      <p>
+        A calm, structured, technical learning platform for digital forensics,
+        incident response, evidence handling, and investigation workflows.
+      </p>
+    </div>
+    <div>
+      <h3>Learning Paths</h3>
+      <a href="/pages/fundamentals.html">Forensic Foundations</a>
+      <a href="/pages/data-collection.html">Acquisition Workflow</a>
+      <a href="/pages/data-sources.html">Artifact Analysis</a>
+      <a href="/pages/tools.html">Tool Familiarity</a>
+    </div>
+    <div>
+      <h3>Practice</h3>
+      <a href="/pages/labs.html">Guided Labs</a>
+      <a href="/pages/evidence.html">Evidence Handling</a>
+      <a href="/pages/resources.html">Trusted References</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
+    <span class="mono">Preserve • Verify • Document • Analyze</span>
+  </div>
+</footer>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/scroll-animations.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

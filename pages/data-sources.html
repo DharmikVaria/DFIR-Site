@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Sources | Digital Forensics Knowledge System</title>
+  <meta name="description" content="Windows, Linux, network, cloud, memory, and mobile forensic artifacts explained in detail.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+</head>
+<body data-page="data-sources">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="/">
+      <span class="brand-mark">DF</span>
+      <span class="brand-text">Forensic Knowledge System</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/pages/fundamentals.html">Fundamentals</a>
+      <a href="/pages/evidence.html">Evidence</a>
+      <a href="/pages/data-collection.html">Collection</a>
+      <a href="/pages/data-sources.html">Sources</a>
+      <a href="/pages/tools.html">Tools</a>
+      <a href="/pages/labs.html">Labs</a>
+      <a href="/pages/resources.html">Resources</a>
+    </div>
+  </nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container narrow reveal">
+        <p class="eyebrow">Artifact Layer</p>
+        <h1>Digital Evidence Sources and Artifacts</h1>
+        <p>
+          Artifacts are traces created by operating systems, applications, users, malware, services, and networks.
+          Strong investigations correlate artifacts across multiple sources to avoid weak conclusions.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <article class="content-card wide reveal">
+          <h2>Why artifact sources matter</h2>
+          <p>
+            A single event can leave traces in many places. A downloaded executable may appear in browser history,
+            download cache, Zone.Identifier alternate data streams, Prefetch, Event Logs, registry user assist keys,
+            antivirus logs, filesystem metadata, memory, and network records. Correlating these traces improves
+            confidence and reduces false assumptions.
+          </p>
+          <p>
+            Artifact analysis is about context. Investigators ask what created the artifact, how reliable the
+            timestamp is, whether the artifact can be modified, whether it identifies a user or only a system,
+            and what additional evidence can confirm it.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Windows artifacts</h2>
+          <ul class="artifact-list">
+            <li><strong>MFT:</strong> NTFS Master File Table records filenames, metadata, timestamps, and deleted file traces.</li>
+            <li><strong>Registry:</strong> Stores system, user, application, USB, network, and persistence information.</li>
+            <li><strong>Prefetch:</strong> Indicates program execution, run count, and related file references.</li>
+            <li><strong>Event Logs:</strong> Capture logons, process events, service activity, PowerShell, security events, and system changes.</li>
+            <li><strong>LNK files:</strong> Shortcut artifacts that can show opened files, paths, volumes, and timestamps.</li>
+            <li><strong>Jump Lists:</strong> Recent and frequent application activity, useful for user behavior reconstruction.</li>
+            <li><strong>Shellbags:</strong> Folder viewing history, including removable or deleted directory references.</li>
+            <li><strong>Recycle Bin:</strong> Deleted file names, original paths, deletion timestamps, and user SID references.</li>
+            <li><strong>SRUM:</strong> System Resource Usage Monitor data showing application resource and network usage.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Linux artifacts</h2>
+          <ul class="artifact-list">
+            <li><strong>/var/log/auth.log or secure:</strong> SSH logins, sudo use, authentication failures, and privilege activity.</li>
+            <li><strong>syslog and messages:</strong> System service events, daemon output, kernel messages, and operational traces.</li>
+            <li><strong>bash history:</strong> Commands executed by users, though it may be disabled, edited, or incomplete.</li>
+            <li><strong>cron:</strong> Scheduled tasks used for administration or persistence.</li>
+            <li><strong>systemd journals:</strong> Structured logs for services, boots, units, and system activity.</li>
+            <li><strong>SSH artifacts:</strong> authorized_keys, known_hosts, config files, and login traces.</li>
+            <li><strong>Package logs:</strong> apt, yum, dnf, dpkg, and rpm logs showing installed or removed software.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Network artifacts</h2>
+          <p>
+            Network evidence helps identify communication patterns, command-and-control activity, data transfer,
+            scanning, brute force attempts, DNS tunneling, and suspicious endpoints. It is especially useful when
+            host logs are missing or tampered with.
+          </p>
+          <ul class="artifact-list">
+            <li><strong>PCAP:</strong> Packet-level evidence that can reveal protocols, payloads, sessions, and files.</li>
+            <li><strong>DNS logs:</strong> Domain lookups, suspicious dynamic domains, tunneling, and malware beacons.</li>
+            <li><strong>Proxy logs:</strong> Web requests, user agents, downloaded files, URLs, and authenticated users.</li>
+            <li><strong>Firewall logs:</strong> Allowed and blocked connections, ports, IPs, and traffic direction.</li>
+            <li><strong>Zeek logs:</strong> Structured network metadata for connections, DNS, HTTP, SSL, files, and notices.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Cloud artifacts</h2>
+          <p>
+            Cloud forensics focuses on audit trails, identity activity, storage access, API calls, configuration
+            changes, and data movement. Investigators must act quickly because log retention may be limited by plan,
+            configuration, or tenant policy.
+          </p>
+          <ul class="artifact-list">
+            <li><strong>AWS CloudTrail:</strong> API calls, IAM activity, console logins, role use, and resource changes.</li>
+            <li><strong>Azure logs:</strong> Entra ID sign-ins, audit logs, activity logs, conditional access, and resource operations.</li>
+            <li><strong>GCP audit logs:</strong> Admin activity, data access events, and service operations.</li>
+            <li><strong>M365 audit logs:</strong> Exchange, SharePoint, OneDrive, Teams, mailbox access, file sharing, and user activity.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Memory artifacts</h2>
+          <p>
+            Memory analysis reveals runtime state that may not exist on disk. Investigators can identify suspicious
+            processes, injected code, loaded DLLs, open handles, command lines, credentials, network connections,
+            unpacked malware, and encryption material.
+          </p>
+          <p>
+            Tools such as Volatility 3 help parse memory images into process lists, network structures, registry
+            hives, command history, modules, and suspicious memory regions. Findings should be correlated with disk
+            and log evidence.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Mobile artifacts</h2>
+          <p>
+            Mobile devices contain communication, location, application, media, and account evidence. Acquisition
+            depth depends on device lock state, encryption, OS version, legal authority, and available tools.
+          </p>
+          <ul class="artifact-list">
+            <li><strong>SMS and calls:</strong> Message content, call duration, numbers, timestamps, and contact links.</li>
+            <li><strong>App databases:</strong> SQLite databases for chats, social apps, browsers, and local app state.</li>
+            <li><strong>Location data:</strong> GPS, Wi-Fi, cell tower, map history, and application location caches.</li>
+            <li><strong>EXIF metadata:</strong> Camera model, timestamps, GPS coordinates, and editing traces in images.</li>
+            <li><strong>Tokens:</strong> Authentication artifacts that may show account access or session state.</li>
+          </ul>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Real investigation usage</h2>
+          <p>
+            In an insider data theft case, investigators may combine Windows Shellbags, LNK files, USB registry keys,
+            cloud sync logs, browser uploads, archive creation timestamps, and proxy logs. In ransomware response,
+            they may correlate process execution, scheduled tasks, event logs, file rename patterns, ransom notes,
+            memory evidence, and firewall connections.
+          </p>
+          <p>
+            The strongest findings come from convergence: multiple independent artifacts pointing to the same event.
+          </p>
+        </article>
+
+        <article class="content-card reveal">
+          <h2>Beginner artifact mistakes</h2>
+          <ul class="clean-list">
+            <li>Assuming one artifact proves the entire event.</li>
+            <li>Ignoring timestamp source, time zone, and last modified behavior.</li>
+            <li>Not checking whether logs were cleared, rotated, or overwritten.</li>
+            <li>Confusing account activity with human attribution.</li>
+            <li>Failing to validate automated parser output against raw artifacts.</li>
+            <li>Collecting artifacts without preserving source path and context.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <a class="brand footer-brand" href="/">
+        <span class="brand-mark">DF</span>
+        <span class="brand-text">Forensic Knowledge System</span>
+      </a>
+      <p>
+        A calm, structured, technical learning platform for digital forensics,
+        incident response, evidence handling, and investigation workflows.
+      </p>
+    </div>
+    <div>
+      <h3>Learning Paths</h3>
+      <a href="/pages/fundamentals.html">Forensic Foundations</a>
+      <a href="/pages/data-collection.html">Acquisition Workflow</a>
+      <a href="/pages/data-sources.html">Artifact Analysis</a>
+      <a href="/pages/tools.html">Tool Familiarity</a>
+    </div>
+    <div>
+      <h3>Practice</h3>
+      <a href="/pages/labs.html">Guided Labs</a>
+      <a href="/pages/evidence.html">Evidence Handling</a>
+      <a href="/pages/resources.html">Trusted References</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Built for DFIR learning, documentation, and resume-level project demonstration.</span>
+    <span class="mono">Preserve • Verify • Document • Analyze</span>
+  </div>
+</footer>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/scroll-animations.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
